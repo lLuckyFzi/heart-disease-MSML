@@ -2,8 +2,10 @@ name: Data Preprocessing Workflow
 
 on:
   push:
+    branches:
+      - main
     paths:
-      - 'preprocessing/heart_disease_clean/**'
+      - 'heart_disease.csv'
 
 jobs:
   preprocess:
@@ -22,12 +24,16 @@ jobs:
           pip install pandas scikit-learn numpy
 
       - name: Run Preprocessing Script
-        run: python preprocessing/automate_Nama-siswa.py
+        run: python preprocessing/automate_Lucky.py
 
       - name: Commit and Push Clean Data
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # Menambahkan file hasil proses ke repositori
+          # Pastikan folder 'namadataset_preprocessing' sudah sesuai dengan isi script automate Anda
           git add preprocessing/namadataset_preprocessing/heart_disease_clean.csv
-          git commit -m "Update preprocessed data" || echo "No changes to commit"
+          
+          git commit -m "Update preprocessed data via GitHub Actions" || echo "No changes to commit"
           git push
