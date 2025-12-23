@@ -1,3 +1,1 @@
-Repository Workflow CI hanya dibuat public.
-Workflownya menggunakan GitHub Actions agar dapat melakukan retraining model menggunakan MLflow Project.
-Workflownya dijalankan setiap ada push ke folder Workflow_Machine_Learning.
+https://github.com/lLuckyFzi/Experiment-SML-Workflow-CI.git
