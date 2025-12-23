@@ -30,4 +30,4 @@ jobs:
       - name: Run mlflow project
         run: |
           cd Workflow_Machine_Learning
-          mlflow run .
+          mlflow run . --env-manager=local
