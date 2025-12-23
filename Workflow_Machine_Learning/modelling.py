@@ -1,22 +1,17 @@
-# For Kriteria 3 (Advanced)
+# For Kriteria 3
 
 import pandas as pd
 import mlflow
 import mlflow.sklearn
-import dagshub
 import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
 
-import os
 
-if "GITHUB_ACTIONS" in os.environ:
-    repo_url = "https://dagshub.com/lLuckyFzi/heart-disease-msml.mlflow"
-    mlflow.set_tracking_uri(repo_url)
-else:
-    dagshub.init(repo_owner='lLuckyFzi', repo_name='heart-disease-msml', mlflow=True)
+mlflow.set_tracking_uri("http://127.0.0.1:5000")
+mlflow.set_experiment("CI Training")
 
 def train_workflow():
     data_path = "heart_disease_preprocessing/heart_disease_clean.csv"

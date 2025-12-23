@@ -1,7 +1,6 @@
 name: heart_disease_env
 channels:
   - defaults
-  - conda-forge
 dependencies:
   - python=3.9
   - pip

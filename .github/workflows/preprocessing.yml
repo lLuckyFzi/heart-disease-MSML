@@ -41,5 +41,4 @@ jobs:
           
           git pull --rebase origin main
           
-          # Push hasil akhir ke branch main
           git push origin main

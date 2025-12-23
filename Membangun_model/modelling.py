@@ -3,14 +3,14 @@
 import pandas as pd
 import mlflow
 import mlflow.sklearn
-import dagshub
 import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
 
-dagshub.init(repo_owner='lLuckyFzi', repo_name='heart-disease-msml', mlflow=True)
+mlflow.set_tracking_uri("http://127.0.0.1:5000")
+mlflow.set_experiment("Heart Disease Baseline")
 
 def train_basic():
     df = pd.read_csv("heart_disease_preprocessing/heart_disease_clean.csv")
