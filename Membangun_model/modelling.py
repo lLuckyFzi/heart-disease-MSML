@@ -10,11 +10,12 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
 import os
 
-# mlflow.set_tracking_uri("http://127.0.0.1:5000")
-mlflow.set_experiment("Heart Disease Baseline")
-
 if os.getenv("GITHUB_ACTIONS") == "true":
     mlflow.set_tracking_uri("file:./mlruns")
+else:
+    mlflow.set_tracking_uri("file:./mlruns")
+
+mlflow.set_experiment("Heart Disease Baseline")
 
 def train_basic():
     df = pd.read_csv("heart_disease_preprocessing/heart_disease_clean.csv")
