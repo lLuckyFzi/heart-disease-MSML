@@ -27,6 +27,6 @@ def automate_preprocessing(input_path, output_path):
 
 if __name__ == "__main__":
     RAW_DATA = "heart_disease.csv"
-    OUTPUT_DATA = "preprocessing/heart_disease_preprocessing/hear_disease_clean.csv"
+    OUTPUT_DATA = "preprocessing/heart_disease_preprocessing/heart_disease_clean.csv"
 
     automate_preprocessing(RAW_DATA, OUTPUT_DATA)
