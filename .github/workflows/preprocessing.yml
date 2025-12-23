@@ -2,10 +2,8 @@ name: Data Preprocessing Workflow
 
 on:
   push:
-    branches:
-      - main
-    paths:
-      - 'heart_disease.csv'
+    branches: [ main ]
+    paths: [ 'heart_disease.csv' ]
 
 permissions:
   contents: write
@@ -16,6 +14,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -23,8 +23,7 @@ jobs:
           python-version: '3.9'
 
       - name: Install dependencies
-        run: |
-          pip install pandas scikit-learn numpy
+        run: pip install pandas scikit-learn numpy
 
       - name: Run Preprocessing Script
         run: python preprocessing/automate_Lucky.py
@@ -33,11 +32,14 @@ jobs:
         run: |
           git config --global user.name "lLuckyFzi"
           git config --global user.email "levryn04@gmail.com"
-                
+          
+          git checkout main
+          
           git add preprocessing/heart_disease_preprocessing/heart_disease_clean.csv
-                
-          git commit -m "Update preprocessed data via GitHub Actions" || echo "No changes to commit"
-                
+          
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Update preprocessed data via GitHub Actions")
+          
           git pull --rebase origin main
-                
+          
+          # Push hasil akhir ke branch main
           git push origin main
