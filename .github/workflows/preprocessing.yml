@@ -33,8 +33,11 @@ jobs:
         run: |
           git config --global user.name "lLuckyFzi"
           git config --global user.email "levryn04@gmail.com"
-          
+                
           git add preprocessing/heart_disease_preprocessing/heart_disease_clean.csv
-          
+                
           git commit -m "Update preprocessed data via GitHub Actions" || echo "No changes to commit"
-          git push
+                
+          git pull --rebase origin main
+                
+          git push origin main
