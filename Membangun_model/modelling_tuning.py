@@ -1,4 +1,4 @@
-# For Kriteria 2 (Advanced)
+# For Kriteria 2 
 
 import pandas as pd
 import mlflow

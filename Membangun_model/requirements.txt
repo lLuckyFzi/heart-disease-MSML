@@ -1,6 +1,8 @@
 pandas
 scikit-learn
 mlflow
-dagshub
 matplotlib
 seaborn
+dagshub
+flask
+prometheus_client
