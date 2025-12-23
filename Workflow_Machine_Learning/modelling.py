@@ -10,7 +10,13 @@ from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
 
-dagshub.init(repo_owner='lLuckyFzi', repo_name='heart-disease-msml', mlflow=True)
+import os
+
+if "GITHUB_ACTIONS" in os.environ:
+    repo_url = "https://dagshub.com/lLuckyFzi/heart-disease-msml.mlflow"
+    mlflow.set_tracking_uri(repo_url)
+else:
+    dagshub.init(repo_owner='lLuckyFzi', repo_name='heart-disease-msml', mlflow=True)
 
 def train_workflow():
     data_path = "heart_disease_preprocessing/heart_disease_clean.csv"
