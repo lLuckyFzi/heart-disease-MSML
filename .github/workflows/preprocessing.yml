@@ -31,9 +31,7 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           
-          # Menambahkan file hasil proses ke repositori
-          # Pastikan folder 'namadataset_preprocessing' sudah sesuai dengan isi script automate Anda
-          git add preprocessing/namadataset_preprocessing/heart_disease_clean.csv
+          git add preprocessing/heart_disease_preprocessing/heart_disease_clean.csv
           
           git commit -m "Update preprocessed data via GitHub Actions" || echo "No changes to commit"
           git push
