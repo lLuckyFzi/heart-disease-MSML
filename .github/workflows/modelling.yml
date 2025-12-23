@@ -28,6 +28,8 @@ jobs:
           pip install -r Membangun_model/requirements.txt
 
       - name: Run mlflow project
+        env:
+          MLFLOW_TRACKING_URI: "file:./mlruns"
         run: |
           cd Workflow_Machine_Learning
           mlflow run . --env-manager=local
