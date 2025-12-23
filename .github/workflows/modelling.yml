@@ -10,7 +10,7 @@ jobs:
 
     steps:
       - name: Set up job
-        run: echo "Start job"
+        run: echo "Starting CI for Skilled Level"
 
       - name: Run actions/checkout@v3
         uses: actions/checkout@v3
@@ -24,12 +24,20 @@ jobs:
         run: python --version
 
       - name: Install dependencies
+        run: pip install mlflow pandas scikit-learn matplotlib seaborn
+
+      - name: Set MLflow Tracking URI
         run: |
-          pip install -r Membangun_model/requirements.txt
+          export MLFLOW_TRACKING_URI=file:$(pwd)/mlruns
+          echo "MLFLOW_TRACKING_URI=$MLFLOW_TRACKING_URI" >> $GITHUB_ENV
 
       - name: Run mlflow project
-        env:
-          MLFLOW_TRACKING_URI: "file:./mlruns"
         run: |
           cd Workflow_Machine_Learning
-          mlflow run . --env-manager=local
+          mlflow run . --env-manager=local --experiment-name="CI Training Skilled"
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: mlflow-results
+          path: Workflow_Machine_Learning/mlruns

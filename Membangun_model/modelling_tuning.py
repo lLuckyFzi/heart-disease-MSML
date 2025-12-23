@@ -8,14 +8,6 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 import matplotlib.pyplot as plt
 import seaborn as sns
-import os
-
-if os.getenv("GITHUB_ACTIONS") == "true":
-    mlflow.set_tracking_uri("file:./mlruns")
-else:
-    mlflow.set_tracking_uri("file:./mlruns")
-
-mlflow.set_experiment("Heart Disease Tuning")
 
 def train_tuning():
     df = pd.read_csv("heart_disease_preprocessing/heart_disease_clean.csv")

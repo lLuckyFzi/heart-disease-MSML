@@ -7,8 +7,6 @@ from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
 
-mlflow.set_experiment("Heart Disease Baseline")
-
 def train_basic():
     df = pd.read_csv("heart_disease_preprocessing/heart_disease_clean.csv")
     X = df.drop('target', axis=1)
