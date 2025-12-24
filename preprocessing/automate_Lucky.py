@@ -26,7 +26,7 @@ def automate_preprocessing(input_path, output_path):
     print(f"Data preprocessed tersimpan di: {output_path}")
 
 if __name__ == "__main__":
-    RAW_DATA = "heart_disease.csv"
-    OUTPUT_DATA = "preprocessing/heart_disease_preprocessing/heart_disease_clean.csv"
+    RAW_DATA = "../heart_disease.csv"
+    OUTPUT_DATA = "heart_disease_preprocessing/heart_disease_clean.csv"
 
     automate_preprocessing(RAW_DATA, OUTPUT_DATA)
